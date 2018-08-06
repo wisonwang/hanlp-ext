@@ -36,7 +36,7 @@ public abstract class HanLPTokenizerFactory extends AbstractTokenizerFactory {
         return new HanLPTokenizerFactory(indexSettings, environment, name, settings) {
             @Override
             public Tokenizer create() {
-                return new HanLPTokenizer(NLPTokenizer.SEGMENT, null, enablePorterStemming);
+                return new HanLPTokenizer(NLPTokenizer.ANALYZER, null, enablePorterStemming);
             }
         };
     }

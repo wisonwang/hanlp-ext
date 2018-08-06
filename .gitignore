@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+lib
 target/
 build/
 .gradle/
@@ -95,7 +96,3 @@ npm-debug.log
 # ignore orig file
 *.orig
 !/gradle/wrapper/gradle-wrapper.jar
-!/lib/hanlp-1.3.2.jar
-!/lib/hanlp-1.3.2-sources.jar
-!/lib/hanlp-1.3.4-sources.jar
-!/lib/hanlp-1.3.4.jar
