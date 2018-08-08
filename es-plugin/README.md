@@ -32,8 +32,60 @@ ES_HOME/bin/elasticsearch-plugin install file:///home/hldev/hldata/data/hanlp-ex
 ```
 ES_CLASSPATH="$ES_HOME/lib/elasticsearch-5.4.3.jar:$ES_HOME/lib/*:$ES_HOME/plugins/elasticsearch-hanlp/"
 ```
-   
-最后运行elasticsearch即可
+
+5. 最后运行elasticsearch即可
+
+目前集成了handlp 和 handlp-index 两个分析器，用户可以搭配不同的tokenizer来实现不同的分析器，如下：
+
+```
+ PUT video-index
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "hanlp-standard": {
+          "type": "custom",
+         
+          "tokenizer": "hanlp-standard"
+          
+        }
+        ,"hanlp-nlp": {
+          "type": "custom",
+         
+          "tokenizer": "hanlp-nlp"
+          
+        },
+        "hanlp-nshort": {
+          "type": "custom",
+         
+          "tokenizer": "hanlp-nshort"
+          
+        } ,"hanlp-crf": {
+          "type": "custom",
+         
+          "tokenizer": "hanlp-crf"
+          
+        }
+        ,"hanlp-speed": {
+          "type": "custom",
+         
+          "tokenizer": "hanlp-speed"
+          
+        }
+      }
+      
+    }
+  }
+}
+
+GET video-index/_analyze?pretty
+{
+  "analyzer" : "hanlp-nlp",
+  "text" : ["银河系中的至尊霸主灭霸（乔什·布洛林饰）带着几个得力手下洗劫了全宇宙，只为了将所有的无限宝石镶嵌于金属手套上，这个手套可以将整个银河系毁灭于弹指间。为了拯救宇宙，托尼·斯塔克（小罗伯特·唐尼饰）和史蒂夫·罗杰斯（克里斯·埃文斯饰）需要摒弃前嫌，重组复仇者联盟，并与蜘蛛侠（汤姆·赫兰德饰）、奇异博士（本尼迪克特·康伯巴奇饰）、银河护卫队、黑豹（查德维克·博斯曼饰）以及瓦坎达人民的力量一同作战"]
+}
+
+```
+
 
 测试方法：
 
